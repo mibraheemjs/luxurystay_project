@@ -1,0 +1,185 @@
+/* ==============================
+   LUXURYSTAY - ROYAL NAVBAR
+================================ */
+:root {
+    --royal-dark: #211912;
+    --royal-gold: #c6a46a;
+    --royal-gold-light: #e6d1a5;
+    --royal-beige: #e9dfcd;
+    --royal-ivory: #f8f3e9;
+}
+
+/* Main Navbar Wrapper */
+.navbar-wrapper {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    color: var(--royal-ivory);
+    background: transparent;
+    transition: background 0.45s ease, box-shadow 0.45s ease, backdrop-filter 0.45s ease;
+}
+
+.navbar-wrapper.scrolled {
+    background: rgba(33, 25, 18, 0.96);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
+}
+
+.royal-navbar {
+    width: 100%; max-width: 1600px;
+    height: 105px; margin: auto; padding: 0 7%;
+    display: flex; align-items: center; justify-content: space-between; gap: 35px;
+    transition: height 0.4s ease;
+}
+
+.scrolled .royal-navbar { height: 82px; }
+
+/* Logo */
+.brand-logo {
+    display: flex; flex-direction: column; text-decoration: none; flex-shrink: 0;
+    animation: logoReveal 1s ease both;
+}
+.brand-logo:hover .brand-name { letter-spacing: 3px; }
+.brand-name {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 37px; font-weight: 400; letter-spacing: 2px;
+    color: var(--royal-gold-light); line-height: 1.1;
+    transition: letter-spacing 0.4s ease;
+}
+.brand-subtitle {
+    margin-top: 9px; font-size: 9px; letter-spacing: 4.5px; text-align: center; color: var(--royal-beige);
+}
+.brand-subtitle span { color: var(--royal-gold); }
+
+/* Desktop Navigation */
+.desktop-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(15px, 2.8vw, 42px); list-style: none; margin: 0; padding: 0;
+}
+.desktop-nav li {
+    opacity: 0; animation: navReveal 0.7s ease forwards; animation-delay: var(--delay);
+}
+.desktop-nav a {
+    position: relative; display: inline-block; padding: 12px 0;
+    text-decoration: none; white-space: nowrap; color: var(--royal-ivory);
+    font-size: 13px; letter-spacing: 0.8px; transition: color 0.35s ease;
+}
+.desktop-nav a::after {
+    content: ''; position: absolute; left: 50%; bottom: 3px;
+    width: 0; height: 1px; background: var(--royal-gold);
+    transition: all 0.35s ease; transform: translateX(-50%);
+}
+.desktop-nav a:hover { color: var(--royal-gold-light); }
+.desktop-nav a:hover::after { width: 100%; }
+
+/* Reserve Button */
+.reserve-button {
+    min-height: 49px; padding: 0 23px; display: flex; align-items: center; justify-content: center; gap: 14px;
+    border: 1px solid var(--royal-gold); color: var(--royal-gold-light); text-decoration: none;
+    font-size: 11px; letter-spacing: 1.7px; white-space: nowrap; flex-shrink: 0; transition: all 0.4s ease;
+}
+.reserve-button:hover {
+    background: var(--royal-gold); color: var(--royal-dark);
+    box-shadow: 0 5px 25px rgba(198, 164, 106, 0.25);
+}
+.reserve-arrow { font-size: 17px; transition: transform 0.4s ease; }
+.reserve-button:hover .reserve-arrow { transform: translate(4px, -4px); }
+
+/* Mobile Toggle */
+.menu-toggle {
+    display: none; width: 42px; height: 42px; padding: 10px 6px;
+    border: none; background: transparent; cursor: pointer; z-index: 1002; flex-shrink: 0;
+}
+.menu-toggle span {
+    display: block; width: 29px; height: 1.5px; margin: 7px auto;
+    background: var(--royal-gold-light); transition: transform 0.35s ease;
+}
+.menu-toggle.active span:first-child { transform: translateY(4.25px) rotate(45deg); }
+.menu-toggle.active span:last-child { transform: translateY(-4.25px) rotate(-45deg); }
+
+/* Mobile Menu Base */
+.mobile-menu { display: none; }
+
+/* Animations */
+@keyframes logoReveal {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes navReveal {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mobileLinkReveal {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================ */
+
+/* Tablets & Laptops (max-width: 1100px) */
+@media (max-width: 1100px) {
+    .royal-navbar { padding: 0 4%; gap: 15px; }
+    .brand-name { font-size: 29px; }
+    .desktop-nav { gap: 15px; }
+    .desktop-nav a { font-size: 11px; letter-spacing: 0.6px; }
+    .reserve-button { padding: 0 12px; font-size: 9px; }
+}
+
+/* Mobile Devices (max-width: 850px) */
+@media (max-width: 850px) {
+    .royal-navbar { height: 82px; padding: 0 6%; }
+    .scrolled .royal-navbar { height: 72px; }
+    .brand-name { font-size: 28px; }
+    .brand-subtitle { font-size: 8px; }
+    .desktop-nav, .royal-navbar > .reserve-button { display: none; }
+    .menu-toggle { display: block; }
+
+    .mobile-menu {
+        display: block; position: fixed; top: 0; right: 0;
+        width: min(100%, 420px); height: 100dvh;
+        padding: 100px 35px 35px; background: var(--royal-dark);
+        border-left: 1px solid rgba(198, 164, 106, 0.2);
+        overflow-y: auto; transform: translateX(100%); visibility: hidden;
+        transition: transform 0.45s ease, visibility 0.45s ease; z-index: 1001;
+    }
+    .mobile-menu.open { transform: translateX(0); visibility: visible; }
+    .mobile-menu-content { display: flex; flex-direction: column; min-height: 100%; }
+    .mobile-menu-label { color: var(--royal-gold); font-size: 10px; letter-spacing: 3px; margin: 0 0 30px; }
+    
+    .mobile-menu-content > a:not(.mobile-reserve) {
+        display: flex; align-items: center; gap: 18px; padding: 19px 0;
+        border-bottom: 1px solid rgba(198, 164, 106, 0.18);
+        color: var(--royal-ivory); text-decoration: none; font-family: Georgia, serif;
+        font-size: 23px; opacity: 0; transform: translateX(20px);
+    }
+    .mobile-menu.open .mobile-menu-content > a:not(.mobile-reserve) {
+        animation: mobileLinkReveal 0.5s ease forwards;
+        animation-delay: var(--delay);
+    }
+    .mobile-link-number { color: var(--royal-gold); font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 1px; }
+    .mobile-link-arrow { margin-left: auto; color: var(--royal-gold); font-size: 16px; }
+
+    .mobile-reserve {
+        display: block; margin-top: 35px; padding: 17px; background: var(--royal-gold);
+        color: var(--royal-dark); text-align: center; text-decoration: none; font-size: 11px; letter-spacing: 2px;
+    }
+    .mobile-menu-footer {
+        margin-top: auto; padding-top: 35px; color: #a99a83; font-size: 9px; letter-spacing: 2px; text-align: center;
+    }
+}
+
+/* Small Phones (max-width: 380px) */
+@media (max-width: 380px) {
+    .royal-navbar { padding: 0 5%; }
+    .brand-name { font-size: 25px; }
+    .mobile-menu { padding-left: 25px; padding-right: 25px; }
+    .mobile-menu-content > a:not(.mobile-reserve) { font-size: 20px; }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .navbar-wrapper *, .navbar-wrapper *::before, .navbar-wrapper *::after {
+        animation-duration: 0.01ms !important; transition-duration: 0.01ms !important;
+    }
+}

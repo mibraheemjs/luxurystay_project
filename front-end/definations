@@ -1,0 +1,3 @@
+BrowserRouter = React application main routing enable karta hai
+Link = Pages reload kiye baghair navigate karega
+useParams = URL se room ka slug read karega.

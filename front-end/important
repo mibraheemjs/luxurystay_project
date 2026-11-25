@@ -1,0 +1,43 @@
+# LuxuryStay – Project Progress
+
+## Frontend Development (Completed)
+
+1. React + Vite Project Setup
+2. Navbar
+3. Hero Section
+4. Booking Search Section
+5. Rooms & Suites Section
+6. Room Details Page
+7. Dining Section
+8. Experiences Section
+9. About Section
+10. Footer
+11. Login Page
+12. Register Page
+13. Forgot Password Page
+14. User Dashboard
+15. Admin Dashboard
+
+## Dashboard Features
+
+- User Dashboard: Overview, My Bookings, My Profile
+- Admin Dashboard: Overview, Rooms, Bookings, Customers
+
+## Design
+
+- Premium Luxury Hotel Theme
+- Dark Brown & Champagne Gold Color Scheme
+- Responsive Layout
+
+## Backend Development (Pending)
+
+1. Node.js & Express Setup
+2. MongoDB Connection
+3. User Registration & Login API
+4. JWT Authentication
+5. Password Hashing
+6. Room Management APIs
+7. Booking Management System
+8. Admin Authorization
+
+**Current Status:** Frontend Completed | Backend Pending
